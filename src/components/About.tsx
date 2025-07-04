@@ -36,8 +36,9 @@ export default function About() {
       )
 
       // Stagger animation for content
-      if (contentRef.current?.children) {
-        gsap.fromTo(contentRef.current.children,
+      if (contentRef.current && contentRef.current.children.length > 0) {
+        gsap.fromTo(
+          contentRef.current.children,
           { y: 30, opacity: 0 },
           {
             y: 0,
