@@ -6,13 +6,10 @@ const nextConfig = {
   },
   webpack: (config) => {
     config.module.rules.push({
-      test: /\.(mp4|webm)$/,
-      use: {
-        loader: 'file-loader',
-        options: {
-          publicPath: '/_next/static/videos/',
-          outputPath: 'static/videos/',
-        },
+      test: /\.(mp4|webm|mov)$/,
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/videos/[name][ext]',
       },
     });
     return config;

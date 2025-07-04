@@ -33,22 +33,24 @@ export default function Projects() {
       )
 
       // Stagger animation for project cards
-      gsap.fromTo(projectsRef.current?.children,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: projectsRef.current,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      )
+      if (projectsRef.current?.children) {
+        gsap.fromTo(projectsRef.current.children,
+          { y: 100, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: projectsRef.current,
+              start: 'top 80%',
+              end: 'bottom 20%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        )
+      }
     }, sectionRef)
 
     return () => ctx.revert()
